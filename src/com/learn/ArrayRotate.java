@@ -34,6 +34,10 @@ public class ArrayRotate {
 
 	}
 	
+	/**
+	 * @param arr
+	 * @param d
+	 */
 	private static void rotateWithoutExtraSpace(Integer[] arr, int d) {
 		int n = arr.length;
 		int tmp = -1;
