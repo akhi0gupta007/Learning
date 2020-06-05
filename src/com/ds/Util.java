@@ -1,5 +1,7 @@
 package com.ds;
 
+import java.util.Random;
+
 public class Util {
 
 	public static void bubbleSort(int[] a) {
@@ -75,14 +77,14 @@ public class Util {
 	public static int firstOccurence(int elm, int[] a) {
 		Util.bubbleSort(a);
 		int result = -1;
-		System.out.println("Traversing at Search");
+		System.out.println("After sorting...");
 		Util.traverse(a);
 		int mid = -1,low= 0, high = (a.length - 1);
 		for(int i = 0; i<a.length;i++){
 			mid = low+ (high - low)/2;
 			if(a[mid] == elm){
 				result = mid;
-				high = mid -1; // for last occurence just make it low = mid + 1
+				high = mid -1; // for last occurrence just make it low = mid + 1
 			}
 			else if( elm < a[mid]){
 				high = mid - 1;
@@ -94,6 +96,49 @@ public class Util {
 		}
 		
 		return result;
+	}
+	
+	
+	public static int lastOccurrence(int[] a,int elm) {
+		int result = -1;
+		
+		if(!isSorted(a, a.length)) {
+			bubbleSort(a);
+		}
+		
+		int low = 0, high = a.length - 1, mid = low +  (high-low)/2;
+		
+		
+		
+		
+		return result;
+	}
+	
+	public static boolean isSorted(int[] arr, int size) {
+		
+		if(size == 0 || size == 1)
+			return true;
+		
+		//unsorted pair found, checking last two elements of array
+		if(arr[size-2] > arr[size - 1])
+			return false;
+		
+		return isSorted(arr, size -1 );
+		
+	}
+	
+	
+	public static int[] createArray(int size) {
+		LinkedList list = new LinkedList();
+		for(int i = 0;i < size;i++) {
+			list.push(generateRandom());
+		}		
+		return list.asArray();
+	}
+	
+	public static  int generateRandom() {
+		Random ran = new Random();
+		return ran.nextInt(99);
 	}
 	
 	public static int binarySearchRecursive(int elm, int low,int high, int[] a) {

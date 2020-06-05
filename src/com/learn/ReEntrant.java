@@ -18,7 +18,7 @@ public class ReEntrant {
 				System.out.println("execute got lock, waiting() Thread : " + Thread.currentThread().getId());
 				
 				cond.await();
-				System.out.println("Woke Up Thread : " + Thread.currentThread().getId());
+				System.out.println("execute Woke Up Thread : " + Thread.currentThread().getId());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{
@@ -34,6 +34,7 @@ public class ReEntrant {
 	private void doExecute() {
 		System.out.println("doexecute waiting for lock  Thread :" + Thread.currentThread().getId());
 		try {
+			Thread.sleep(1000);
 		lock.lock();				
 		System.out.println("doexecute got lock Thread : " + Thread.currentThread().getId());
 		cond.signal();

@@ -3,58 +3,53 @@ package com.learn;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-public class Barriers {
-	
-	void counting(String region){
-		try {
-			System.out.println("Counting population of "+region);
-			
-			//Thread.sleep(2000);
-			barrier.await();
-			stillCounting();
-		} catch (InterruptedException | BrokenBarrierException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	void stillCounting(){
-		System.out.println("Still counting "+Thread.currentThread().getName());
-		try {
-			barrier.await();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (BrokenBarrierException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	Runnable th2 = new Runnable() {			
+public class Barriers implements Runnable {
+
+	static class Target implements Runnable {
+
 		@Override
 		public void run() {
-			result();
+			System.out.println("Target reached...");
 		}
-	};
-	final CyclicBarrier barrier = new CyclicBarrier(2, th2);
-	void result(){
-		System.out.println("Done");
-	}
-	
-	
-	public static void main(String[] args) {
-		Barriers  obj = new Barriers();
-		
-	
-		Runnable th1 = new Runnable() {			
-			@Override
-			public void run() {
-			obj.counting(Thread.currentThread().getName());	
-			}
-		};
-	
-		new Thread(th1).start();
-		//Thread.sleep(50);
-		new Thread(th1).start();
 
+	}
+
+	ThreadLocal<Integer> th;
+	CyclicBarrier barrier = new CyclicBarrier(3, new Barriers.Target());
+
+	public static void main(String[] args) {
+
+		Barriers bar = new Barriers();
+		Thread th1 = new Thread(bar);
+		Thread th2 = new Thread(bar);
+		Thread th3 = new Thread(bar);
+		th1.start();
+		th2.start();
+		th3.start();
+
+	}
+
+	@Override
+	public void run() {
+		th = ThreadLocal.withInitial(() ->
+			{
+				return 1;
+			});
+
+		while (true) {
+			try {
+				Integer i = th.get();
+				System.out.println(Thread.currentThread().getId()+ " : "+i);
+				th.set(++i);
+				if (i % 5 == 0) {
+					barrier.await();
+				}
+				Thread.sleep(1000);
+			} catch (InterruptedException | BrokenBarrierException e) {
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 }

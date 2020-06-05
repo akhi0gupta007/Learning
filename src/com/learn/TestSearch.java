@@ -14,16 +14,16 @@ public class TestSearch {
 		list.append(56);
 		list.append(51);
 		list.append(8);
-		list.traverse();
+		//list.traverse();
 		int a[] = list.asArray();
 		Util.traverse(a);
-		int position = Util.binarySearch(51,a);
-		System.out.println("Found at "+position);
-		Util.bubbleSort(a);
-		position = Util.binarySearchRecursive(8, 0, a.length -1 , a);
-		System.out.println("Found at "+position);
-		position = Util.firstOccurence(8, a);
-		System.out.println("Found at "+position);
+		System.out.println(Util.firstOccurence(8, a));
+		
+		int b[] = Util.createArray(10);
+		Util.traverse(b);
+		System.out.println("is Sorted "+Util.isSorted(a, a.length));
+		System.out.println("is Sorted "+Util.isSorted(b, b.length));
+		
 	}
 
 }
