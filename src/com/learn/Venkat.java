@@ -101,12 +101,12 @@ public class Venkat {
 		int n = 51;
 		System.out.println(compute(k, n));
 
-		System.out.println(Employee.createEmployes()
-				.stream()
-				.filter(emp -> emp.getAge() > 20)
-				.map(Employee::getName)
-				.map(String::toUpperCase)
-				.collect(Collectors.toCollection(TreeSet::new)));
+//		System.out.println(Employee.createEmployes()
+//				.stream()
+//				.filter(emp -> emp.getAge() > 20)
+//				.map(Employee::getName)
+//				.map(String::toUpperCase)
+//				.collect(Collectors.toCollection(TreeSet::new)));
 
 		//Note the third param in toMap function is mergeFunction, that will determine, which one of duplicates needed to put in map.
 		System.out.println("Map...");

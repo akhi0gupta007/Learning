@@ -16,7 +16,6 @@ public class BSTTest {
 		tree.insert(tree.getRoot(), 8);
 		tree.insert(tree.getRoot(), 19);
 		tree.insert(tree.getRoot(), 2);
-
 		/*
 				  	10
 				   /\
