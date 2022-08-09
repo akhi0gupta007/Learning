@@ -16,6 +16,10 @@ public class ComparingConcepts {
 		float f = 3.12f;
 		go(f);
 		List<Employee> employes = Employee.createEmployes();
+		Collections.sort(employes,(emp1,emp2)->
+			emp1.getName().compareTo(emp1.getName())			
+		);		
+		
 		System.out.println("Before: ");
 		System.out.println(employes);
 		Collections.sort(employes, (x, y) -> x.getAge()

@@ -1,10 +1,11 @@
 package com.ds;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Util {
 
-	public static void bubbleSort(int[] a) {
+	public static void bubbleSort(Integer[] a) {
 
 		for (int i = 0; i < a.length; i++) {
 			boolean swap = false;
@@ -20,7 +21,7 @@ public class Util {
 		}
 	}
 
-	public static void split(int arr[], int larr[], int rarr[], int mid) {		
+	public static void split(Integer arr[], Integer larr[], Integer rarr[], Integer mid) {		
 		int j =0;
 		for (int i = 0; i < arr.length; i++) {
 			if (i < mid) {
@@ -33,13 +34,13 @@ public class Util {
 
 	}
 
-	static void swap(int[] a, int indexX, int indexY) {
+	static void swap(Integer[] a, int indexX, int indexY) {
 		int tmp = a[indexX];
 		a[indexX] = a[indexY];
 		a[indexY] = tmp;
 	}
 
-	public static void traverse(int[] a) {
+	public static void traverse(Integer[] a) {
 		if (a.length == 0) {
 			System.out.println("Empty list");
 			return;
@@ -52,7 +53,7 @@ public class Util {
 		System.out.println("\n");
 	}
 
-	public static int binarySearch(int elm, int[] a) {
+	public static int binarySearch(int elm, Integer[] a) {
 		Util.bubbleSort(a);
 		System.out.println("Traversing at Search");
 		Util.traverse(a);
@@ -74,7 +75,7 @@ public class Util {
 		return -1;
 	}
 	
-	public static int firstOccurence(int elm, int[] a) {
+	public static int firstOccurence(int elm, Integer[] a) {
 		Util.bubbleSort(a);
 		int result = -1;
 		System.out.println("After sorting...");
@@ -99,7 +100,7 @@ public class Util {
 	}
 	
 	
-	public static int lastOccurrence(int[] a,int elm) {
+	public static int lastOccurrence(Integer[] a,int elm) {
 		int result = -1;
 		
 		if(!isSorted(a, a.length)) {
@@ -114,7 +115,7 @@ public class Util {
 		return result;
 	}
 	
-	public static boolean isSorted(int[] arr, int size) {
+	public static boolean isSorted(Integer[] arr, int size) {
 		
 		if(size == 0 || size == 1)
 			return true;
@@ -128,12 +129,14 @@ public class Util {
 	}
 	
 	
-	public static int[] createArray(int size) {
+	public static Integer[] createArray(int size) {
 		LinkedList list = new LinkedList();
 		for(int i = 0;i < size;i++) {
 			list.push(generateRandom());
 		}		
-		return list.asArray();
+		return Arrays.stream(list.asArray())
+                .boxed()
+                .toArray(Integer[]::new);
 	}
 	
 	public static  int generateRandom() {

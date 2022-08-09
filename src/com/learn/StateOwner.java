@@ -3,13 +3,11 @@ package com.learn;
 import java.lang.Thread.State;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
 public class StateOwner {
@@ -39,6 +37,7 @@ public class StateOwner {
 	interface ConcateNate{
 		String add(String s1,String s2);
 	}
+	
 	
 	interface CollectionPrinter {
 		void print(Collection<String> items);

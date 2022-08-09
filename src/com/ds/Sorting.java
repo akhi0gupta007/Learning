@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Sorting {
-    static int a[] = {9000, 301, 398, 399, 533, 8, 206, 990, 552, 663, 755, 133, 791, 274, 955, 338, 168, 220, 706, 452, 139, 175, 391,
+    static Integer a[] = {9000, 301, 398, 399, 533, 8, 206, 990, 552, 663, 755, 133, 791, 274, 955, 338, 168, 220, 706, 452, 139, 175, 391,
             616, 248, 41, 582, 522, 167, 203, 294, 454, 956, 881, 117, 21, 585, 944, 169, 864, 856, 86, 699, 432, 694, 211, 276, 325,
             633, 448, 116, 471, 126, 65, 334, 644, 763, 147, 597, 335, 144, 389, 18, 572, 882, 331, 877, 487, 150, 23, 857, 578, 959,
             729, 89, 831, 488, 333, 420, 745, 92, 91, 872, 61, 257, 880, 991, 667, 564, 100, 125, 878, 458, 692, 654, 78, 381, 618, 24,
@@ -24,6 +26,7 @@ public class Sorting {
         Util.traverse(a);
         List<Integer> list = convertToList(a);
         Long init = System.currentTimeMillis();
+        List<Integer> collect = Arrays.stream(a).collect(Collectors.toList());
         // selectionSort();
           mergeSort(a);
         //insertionSort();
@@ -49,7 +52,7 @@ public class Sorting {
         }
     }
 
-    private static List<Integer> convertToList(int[] a) {
+    private static List<Integer> convertToList(Integer[] a) {
         List<Integer> list = new ArrayList<>();
         for (int x : a) {
             list.add(x);
@@ -83,19 +86,19 @@ public class Sorting {
         }
     }
 
-    public static void mergeSort(int a[]) {
+    public static void mergeSort(Integer a[]) {
         if (a.length == 1)
             return;
         int mid = a.length / 2 + a.length % 2;
-        int[] larr = new int[mid];
-        int[] rarr = new int[a.length - mid];
+        Integer[] larr = new Integer[mid];
+        Integer[] rarr = new Integer[a.length - mid];
         Util.split(a, larr, rarr, mid);
         mergeSort(larr);
         mergeSort(rarr);
         merge(larr,rarr,a);
     }
 
-    public static void merge(int[] larr, int[] rarr, int[] marr) {
+    public static void merge(Integer[] larr, Integer[] rarr, Integer[] marr) {
         int i = 0, j = 0, k = 0;
         int nL = larr.length, nR = rarr.length, nM = marr.length;
         while (i < nL && j < nR) {

@@ -1,5 +1,7 @@
 package com.learn;
 
+import java.util.Arrays;
+
 import com.ds.LinkedList;
 import com.ds.Util;
 
@@ -32,7 +34,9 @@ public class TestCollection {
 		list.push(0);
 		list.traverse();
 		System.out.println(list.getSize());
-		int arr[] = list.asArray();
+		Integer[] arr =  Arrays.stream(list.asArray())
+                .boxed()
+                .toArray(Integer[]::new);
 		System.out.println(arr[5]);
 		Util.traverse(arr);
 		Util.bubbleSort(arr);

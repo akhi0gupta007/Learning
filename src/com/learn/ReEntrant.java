@@ -17,7 +17,7 @@ public class ReEntrant {
 						
 				System.out.println("execute got lock, waiting() Thread : " + Thread.currentThread().getId());
 				
-				cond.await();
+				cond.await(); //release the lock and go to wait state
 				System.out.println("execute Woke Up Thread : " + Thread.currentThread().getId());
 			} catch (Exception e) {
 				e.printStackTrace();
