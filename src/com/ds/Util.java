@@ -40,6 +40,25 @@ public class Util {
 		a[indexY] = tmp;
 	}
 
+	public static void swap2(int[] a, int indexX, int indexY) {
+		int tmp = a[indexX];
+		a[indexX] = a[indexY];
+		a[indexY] = tmp;
+	}
+	public static void print(int[] a) {
+		if (a.length == 0) {
+			System.out.println("Empty list");
+			return;
+		}
+		int i = 0;
+		while (i < a.length) {
+			System.out.print("->" + a[i]);
+			i++;
+		}
+		System.out.println("\n");
+	}
+
+
 	public static void traverse(Integer[] a) {
 		if (a.length == 0) {
 			System.out.println("Empty list");
