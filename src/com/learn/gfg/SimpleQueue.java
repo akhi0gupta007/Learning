@@ -1,5 +1,8 @@
 package com.learn.gfg;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ds.Util;
 
 public class SimpleQueue {
@@ -60,17 +63,71 @@ public class SimpleQueue {
 	}
 
 	public static void main(String[] args) {
-		SimpleQueue queue = new SimpleQueue();
+//		SimpleQueue queue = new SimpleQueue();
+//		System.out.println("Enque");
+//		queue.enque(15);
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Enque");
+//		queue.enque(1);
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Enque");
+//		queue.enque(13);
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Enque");
+//		queue.enque(2);
+//		System.out.println("Enque");
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Enque");
+//		queue.enque(2);
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Deque");
+//		System.out.println(queue.deque());
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Deque");
+//		System.out.println(queue.deque());
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Deque");
+//		System.out.println(queue.deque());
+//		System.out.println("Deque");
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		
+//		System.out.println(queue.deque());
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		System.out.println("Deque");
+//		System.out.println(queue.deque());
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		queue.enque(123);
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+//		queue.print();
+//		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
 		
-		queue.enque(15);
-		queue.enque(1);
-		queue.enque(13);
-		queue.enque(2);
-		System.out.println(queue.deque());
-		System.out.println(queue.deque());
-		queue.enque(123);
-		queue.print();
-		System.out.println("Front "+ queue.getFront()+" Rear : "+queue.getRear());
+		List<Integer> existing = new ArrayList<>();
+//        existing.add(1);
+//        existing.add(2);
+//        existing.add(3);
+//        existing.add(4);
+//        existing.add(5);
+
+        List<Integer> newList = new ArrayList<>();
+        newList.add(3);
+        newList.add(4);
+        newList.add(6);
+        newList.add(7);
+
+        // Create a copy of the old list
+        List<Integer> filteredList = new ArrayList<>(existing);
+
+        // Remove elements not present in the new list
+        //filteredList.retainAll(newList);
+        filteredList.removeAll(newList);
+
+        System.out.println("Filtered list: " + filteredList);
+        
+        List<Integer> toBeAdded = new ArrayList<>(newList);
+        toBeAdded.removeAll(existing);
+        
+        System.out.println("toBeAdded list: " + toBeAdded);
+        
 	}
 
 }
