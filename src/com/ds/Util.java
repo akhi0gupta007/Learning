@@ -40,6 +40,12 @@ public class Util {
 		a[indexY] = tmp;
 	}
 
+	/**
+	 * Swaps the element
+	 * @param a is the array
+	 * @param indexX
+	 * @param indexY
+	 */
 	public static void swap2(int[] a, int indexX, int indexY) {
 		int tmp = a[indexX];
 		a[indexX] = a[indexY];
